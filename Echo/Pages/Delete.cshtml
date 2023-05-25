@@ -1,0 +1,62 @@
+﻿@page "{id}"
+@model Echo.Pages.DeleteModel
+@{
+}
+<body id="adminpage">
+    <header>
+        <nav class="adminheader">
+            <a asp-area="" asp-page="/Admin"><img src="~/Images/LogoWhite.png" /></a>
+            <div class="menulist">
+                <ul>
+                        <li><a asp-page="Admin">Hjem</a></li>
+                    <li><a asp-page="AllExhibits">Udstillinger</a></li>
+                    <li><a asp-page="Create">Opret Ny</a></li>
+                </ul>
+
+                <form method="post" asp-page-handler="search" class="adminsearch">
+                    <input asp-for="SearchCriteria" type="number" minLength="4" placeholder="Indtast udstillingsnr..." /><button class="admininput" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
+            <div class="adminwarning"><span asp-validation-for="SearchCriteria" class="text-danger"></span></div>
+        </nav>
+    </header>
+    <div class="admincontainer">
+        <h3>Slet udstilling</h3>
+        <h2>Udstillingsinfo <span id="headerspan"> - Udstilling @Model.Exhibit.ID </span></h2>
+        <div class="admingrid-container">
+            <div class="admingrid-item">
+                <label>ID</label>
+            </div>
+            <div class="admingrid-item" style="grid-column:2/4;">
+                <label style="margin-bottom:5px;">Udstilling</label><br />
+                <span style="color:dimgrey;">@Model.Exhibit.ID</span>
+                </div>
+            <div class="admingrid-item">
+                <label>Navn</label>
+            </div>
+            <div class="admingrid-item">
+                <label style="margin-bottom:5px;">Dansk</label><br />
+                <span style="color:dimgrey;">@Model.Exhibit.Name</span>
+                </div>
+            <div class="admingrid-item">
+                <label style="margin-bottom:5px;">Engelsk</label><br />
+                <span style="color:dimgrey;">@Model.Exhibit.Nameen</span>
+            </div>
+            <div class="admingrid-item">
+                <label>Artikelnavn</label>
+            </div>
+            <div class="admingrid-item">
+                <label style="margin-bottom:5px;">Dansk</label><br />
+                <span style="color:dimgrey;">@Model.ArticleDa.Name</span>
+            </div>
+            <div class="admingrid-item">
+                <label style="margin-bottom:5px;">Engelsk</label><br />
+                <span style="color:dimgrey;">@Model.ArticleEn.Name</span>
+            </div>
+        </div>
+        <p class="adminwarningtext">Er du sikker på at du vil slette Udstilling @Model.Exhibit.ID, Artikel @Model.ArticleDa.Id og Artikel @Model.ArticleEn.Id? Denne handling kan ikke fortrydes.</p>
+        <div class="admindeletebuttoncontainer">
+            <form method="post" asp-page-handler="delete"><input type="submit" id="adminyesbutton" value="YES" /></form><form method="post" asp-page-handler="return"><input type="submit" id="adminnobutton" value="NO" /></form>
+            </div>
+    </div>
+</body>

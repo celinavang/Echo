@@ -1,0 +1,104 @@
+﻿@page "{id}"
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Echo.Models
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.Extensions.Options
+@inject IStringLocalizer<ExhibitModel> localizer
+@inject IHtmlLocalizer<ExhibitModel> htmllocalizer
+@model ExhibitModel
+@{
+    ViewData["Title"] = Model.exhibitName + " ";
+    var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
+    var requestCulture = requestCultureFeature.RequestCulture;
+}
+
+
+
+<!--Udstillingsside-->
+
+
+<div class="exhibitmain" id="exhibitmain">
+
+    <div class="navigation">
+        <a asp-page="Index" asp-route-culture="da"><div class="exhibitreturnbutton" id="returntoindex"><img src="~/images/return.png" /></div></a>
+    </div>
+
+    <div class="videopreviewcontainer">
+        <img class="recordimage" src="~/Images/Record.png"/>
+        <div class="mask" id="recordimage">
+                <video muted id="exhibitvideo">
+                <source src=@Model.Exhibit.Videourl />
+                </video></div>
+         </div>
+      
+    <div class="playerbox">
+            <br />
+            <!--Exhibit info-->
+            <div class="playerboxheader">
+                <h2>@Model.exhibitName</h2>
+                <h3>@localizer["exhibit"] @Model.Exhibit.ID</h3>
+            </div>
+            <!--CultureSwitchers-->
+            <div class="playerboxlan">
+                <a asp-route-culture="da"><img class="navlangflag" src="~/Images/DA.png" /></a>
+                <a asp-route-culture="en"><img class="navlangflag" src="~/Images/EN.png" /></a>
+            </div>
+            <!--Exibit Audio/Video-->
+            <audio id="exhibitaudio">
+                <source src="~/audio/file_example_OOG_5MG.ogg" type="audio/ogg">
+                Your browser does not support the audio element.
+            </audio>
+            <div class="slidercontainer">
+                <p id="currenttime">00:00</p><progress id="timeline" value="0" max="100"></progress><p id="totaltime">00:00</p>
+            </div>
+            <div class="audiobuttoncontainer">
+                <button type="button" id="rewind"><img src="~/Images/Rewind.png" id="" width="70%" height="auto" /></button>
+                <button type="button" id="play-pause"><img src="~/Images/PlayButton.png" id="" width="100%" height="auto" /></button>
+                <button type="button" id="forward"><img src="~/Images/Forward.png" id="" width="70%" height="auto" /></button>
+            </div>
+        </div>
+    
+    <div class="exhibitarticle">
+        <h1>@Model.Article.Header</h1>
+        <h2>@Model.Article.Subheader</h2>
+        <span style="white-space: pre-line">@Model.Article.Bodytext</span>
+    </div>
+</div>
+
+
+<!--Videoside-->
+
+<div class="videocontainer" id="videocontainer">
+    <!--Udstillingsvideo-->
+
+    <div class="navigation"><div class="exhibitreturnbutton" id="returntoexhibit"><img src="~/images/return.png" /></div></div>
+   
+
+    <video id="exhibitvideo">
+        <source src=@Model.Exhibit.Videourl type="video/mp4" >
+    </video>
+
+    <!--Videocontrols-->
+    <div class="videocontrols">
+
+        <!--Videotitel-->
+        <div class="videoinfocontainer">
+            <h1 culture="da">@Model.exhibitName</h1><h3>@localizer["exhibit"] @Model.Exhibit.ID</h3>
+            </div>
+
+        <!--Videotimeline-->
+        <div class="slidercontainer">
+            <p id="currenttime">00:00</p><progress id="timeline" value="0" max="100"></progress><p id="totaltime">00:00</p>
+        </div>
+
+        <!--Videobuttons-->
+        <div class="videobuttoncontainer">
+            <button type="button" id="rewind"><img src="~/Images/Rewind.png" id="rewind-img" width="70%" height="auto"/></button>
+            <button type="button" id="play-pause"><img src="~/Images/PlayButton.png" id="play-pause-img"width="100%" height="auto"/></button>
+            <button type="button" id="forward"><img src="~/Images/Forward.png" id="forward-img" width="70%" height="auto"/></button>
+        </div>
+
+    </div>
+</div>

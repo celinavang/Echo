@@ -1,0 +1,32 @@
+﻿@page
+@model Echo.Pages.AdminModel
+@{
+}
+
+<body id="adminpage">
+    <header>
+        <nav class="adminheader">
+            <a asp-area="" asp-page="/Admin"><img src="~/Images/LogoWhite.png" /></a>
+            <div class="menulist">
+                <ul>
+                        <li><a asp-page="Admin">Hjem</a></li>
+                    <li><a asp-page="AllExhibits">Udstillinger</a></li>
+                    <li><a asp-page="Create">Opret Ny</a></li>
+                </ul>
+
+                <form method="post" asp-page-handler="search" class="adminsearch">
+                    <input asp-for="SearchCriteria" type="number" minLength="4" placeholder="Indtast udstillingsnr..." /><button class="admininput" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
+            <div class="adminwarning"><span asp-validation-for="SearchCriteria" class="text-danger"></span></div>
+        </nav>
+    </header>
+
+    <div class="adminindex">
+
+    </div>
+
+</body>
+
+
+

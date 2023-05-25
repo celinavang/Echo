@@ -1,0 +1,145 @@
+﻿@page
+@model Echo.Pages.CreateModel
+@{
+}
+
+<div id="adminpage">
+        <header>
+        <nav class="adminheader">
+            <a asp-area="" asp-page="/Admin"><img src="~/Images/LogoWhite.png" /></a>
+            <div class="menulist">
+                <ul>
+                        <li><a asp-page="Admin">Hjem</a></li>
+                    <li><a asp-page="AllExhibits">Udstillinger</a></li>
+                    <li><a asp-page="Create">Opret Ny</a></li>
+                </ul>
+
+                <form method="post" asp-page-handler="search" class="adminsearch">
+                    <input asp-for="SearchCriteria" type="number" minLength="4" placeholder="Indtast udstillingsnr..." /><button class="admininput" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
+            <div class="adminwarning"><span asp-validation-for="SearchCriteria" class="text-danger"></span></div>
+        </nav>
+    </header>
+
+    <div class="admincontainer" id="breadcrumb">
+        <div class="adminbreadcrumb">
+            <a asp-area="" asp-page="/Admin"><i class="fa-solid fa-house" style="color: #000000;"></i></a>
+            <p> > </p>
+            <a asp-area="" asp-page="/AllExhibits">Udstillinger</a>
+            <p> > </p>
+            <a asp-area="" asp-page="/Create" style="font-weight:700;">Ny Udstilling</a>
+        </div>
+    </div>
+    <form method="post">
+        <div class="admincontainer">
+
+
+
+            <h3>Ny udstilling</h3>
+            <h2>Udstillingsinfo <span id="headerspan"> </span></h2>
+
+            <div class="admingrid-container">
+                <div class="admingrid-item" style="grid-column: 1;"><label asp-for="@Model.Exhibit.ID">Udstillings nr</label></div>
+                <div class="admingrid-item" style="grid-column: 2/4;"> 
+                    <input asp-for="@Model.Exhibit.ID" type="number" maxLength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                    <span asp-validation-for="Exhibit.ID" class="text-danger"></span>
+                </div>
+                
+                <div class="admingrid-item"><label minLength="4" asp-for="@Model.Exhibit.Name">Udstillingsnavn</label></div>
+                <div class="admingrid-item">
+                    <label>Dansk</label><br />
+                    <input asp-for="@Model.Exhibit.Name" type="text" />
+                    <span asp-validation-for="Exhibit.Name" class="text-danger"></span>
+                </div>
+                <div class="admingrid-item">
+                    <label>Engelsk</label><br />
+                    <input asp-for="@Model.Exhibit.Nameen" type="text" />
+                    <span asp-validation-for="Exhibit.Nameen" class="text-danger"></span>
+                </div>
+                <div class="admingrid-item">
+                    <label asp-for="@Model.Exhibit">Videofil</label>
+                </div>
+                <div class="admingrid-item">
+                    <label>Dansk</label><br />
+                    <input asp-for="@Model.Exhibit.Videourl" type="text" /><br />
+                    <span asp-validation-for="Exhibit.Videourl" class="text-danger"></span>
+                    <video class="videopreview" controls><source src="" /></video>
+                </div>
+                <div class="admingrid-item">
+                    <label>Dansk</label><br />
+                    <input asp-for="@Model.Exhibit.Videourlen" type="text" /><br />
+                    <span asp-validation-for="Exhibit.Videourlen" class="text-danger"></span>
+                    <video class="videopreview" controls><source src="" /></video>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="admincontainer">
+
+            <h2>Artikel</h2>
+            <div class="admingrid-container">
+                <div class="admingrid-item"><label>Navn</label></div>
+                <div class="admingrid-item">
+                    <label>Dansk</label><br />
+                    <input asp-for="@Model.ArticleDa.Name" type="text" />
+                    <span asp-validation-for="ArticleDa.Name" class="text-danger"></span>
+                </div>
+                <div class="admingrid-item">
+                    <label>Engelsk</label><br />
+                    <input asp-for="@Model.ArticleEn.Name" type="text" />
+                    <span asp-validation-for="ArticleEn.Name" class="text-danger"></span>
+                </div>
+                
+                    <div class="admingrid-item"><label>ID</label></div>
+                    <div class="admingrid-item">
+                        <label>Dansk</label><br />
+                        <input asp-for="@Model.ArticleDa.Id" />
+                    <span asp-validation-for="ArticleDa.Id" class="text-danger"></span>
+                    </div>
+                    <div class="admingrid-item">
+                        <label>Engelsk</label><br />
+                        <input asp-for="@Model.ArticleEn.Id" />
+                        <span asp-validation-for="ArticleEn.Id" class="text-danger"></span>
+                    </div>
+                
+
+                <div class="admingrid-item"><label>Rubrik</label></div>
+                <div class="admingrid-item">
+                    <label>Dansk</label><br />
+                    <input asp-for="@Model.ArticleDa.Header" type="text" />
+                    <span asp-validation-for="ArticleDa.Header" class="text-danger"></span>
+                </div>
+                <div class="admingrid-item">
+                    <label>Engelsk</label><br />
+                    <input asp-for="@Model.ArticleEn.Header" type="text" />
+                    <span asp-validation-for="ArticleEn.Header" class="text-danger"></span>
+                </div>
+                <div class="admingrid-item"><label>Underrubrik</label></div>
+                <div class="admingrid-item">
+                    <label>Dansk</label><br />
+                    <input asp-for="@Model.ArticleDa.Subheader" type="text" />
+                    <span asp-validation-for="ArticleDa.Subheader" class="text-danger"></span>
+                </div>
+                <div class="admingrid-item">
+                    <label>Engelsk</label><br />
+                    <input asp-for="@Model.ArticleEn.Subheader" type="text" />
+                    <span asp-validation-for="ArticleEn.Subheader" class="text-danger"></span>
+                </div>
+                <div class="admingrid-item" style="grid-row:5/7;"><label>Brødtekst</label></div>
+                <div class="admingrid-item" style="grid-column:2/4;">
+                    <label>Dansk</label><br />
+                    <textarea asp-for="@Model.ArticleDa.Bodytext" ></textarea>
+                    <span asp-validation-for="ArticleDa.Bodytext" class="text-danger"></span>
+                </div>
+                <div class="admingrid-item" style="grid-column:2/4;">
+                    <label>Engelsk</label><br />
+                    <textarea asp-for="@Model.ArticleEn.Bodytext"></textarea>
+                    <span asp-validation-for="ArticleDa.Bodytext" class="text-danger"></span>
+                </div>
+            </div>
+            <input type="submit" id="savebuttonedit" value="Opret Udstilling"/>
+        </div>
+    </form>
+</div>

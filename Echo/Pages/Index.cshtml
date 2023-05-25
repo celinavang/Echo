@@ -1,0 +1,49 @@
+﻿@page
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Echo.Models
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.Extensions.Options
+@inject IStringLocalizer<IndexModel> localizer
+@inject IHtmlLocalizer<IndexModel> htmllocalizer
+@model IndexModel
+@{
+    ViewData["Title"] = "Echo";
+    var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
+    var requestCulture = requestCultureFeature.RequestCulture;
+    
+}
+
+<header>
+    <nav class="">
+        <div class="topbar">
+            <!--Header logo-->
+
+            <a asp-area="" asp-page="/Index"><img class="navlogo" src="~/Images/LogoWhite.png" /></a>
+            <div class="navlan">
+                <a asp-route-culture="da"><img class="navlangflag" src="~/Images/DA.png" /></a>
+                <a asp-route-culture="en"><img class="navlangflag" src="~/Images/EN.png" /></a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="indexcontainer"> 
+    <div class="exhibitsearch">
+    <form method="post">
+            <div class="form-group">
+                <label asp-for="SearchCriteria">@localizer["enumber"]</label><br />
+                <input asp-for="SearchCriteria" name="SearchCriteria"
+                       oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                       type="number"
+                       maxlength="4" />  
+            </div>
+            <div class="form-group">
+                <input type="submit" value="@localizer["search"]"/>
+            </div>
+            <span asp-validation-for="SearchCriteria" class="text-danger"></span>
+    </form>
+    <div id="howtolink"><a>Tutorial</a></div>
+</div> 
+</div>
