@@ -1,17 +1,9 @@
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc.Localization;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc;
+
 using Echo.Models;
 using Echo.Interfaces;
-using Echo.Services;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.Extensions.Localization;
-using System.Net.NetworkInformation;
-
-using Microsoft.AspNetCore.Http.Features;
-using Echo.Resources;
 
 namespace Echo.Pages
 {

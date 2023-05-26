@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc.Razor;
-using System.Globalization;
 using Microsoft.Extensions.Options;
+using System.Globalization;
 using Echo.Interfaces;
 using Echo.Services;
 

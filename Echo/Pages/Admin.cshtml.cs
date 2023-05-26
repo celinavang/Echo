@@ -1,10 +1,8 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Echo.Models;
+using Microsoft.AspNetCore.Mvc;
+
 using Echo.Interfaces;
-using Echo.Services;
-using Microsoft.AspNetCore.Localization;
-using System;
+using Echo.Models;
 
 namespace Echo.Pages
 {

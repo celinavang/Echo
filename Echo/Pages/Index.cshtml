@@ -1,10 +1,4 @@
 ﻿@page
-@using Microsoft.AspNetCore.Builder
-@using Microsoft.AspNetCore.Localization
-@using Microsoft.AspNetCore.Mvc.Localization
-@using Echo.Models
-@using Microsoft.AspNetCore.Http.Features
-@using Microsoft.Extensions.Options
 @inject IStringLocalizer<IndexModel> localizer
 @inject IHtmlLocalizer<IndexModel> htmllocalizer
 @model IndexModel
@@ -12,14 +6,12 @@
     ViewData["Title"] = "Echo";
     var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
     var requestCulture = requestCultureFeature.RequestCulture;
-    
 }
 
 <header>
     <nav class="">
         <div class="topbar">
             <!--Header logo-->
-
             <a asp-area="" asp-page="/Index"><img class="navlogo" src="~/Images/LogoWhite.png" /></a>
             <div class="navlan">
                 <a asp-route-culture="da"><img class="navlangflag" src="~/Images/DA.png" /></a>
