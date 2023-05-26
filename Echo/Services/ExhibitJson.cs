@@ -50,16 +50,12 @@ namespace Echo.Services
         public bool ExhibitExists(string id)
         {
             Dictionary<int, Exhibit> exhibits = AllExhibits();
-            
-            foreach (var e in exhibits.Values)
+            if (exhibits.ContainsKey(Int32.Parse(id)))
             {
-                if (e.ID.Equals(id))
-                {
-                    return true;
-                }
-
+                return true;
             }
             return false;
+
         }
 
         public void UpdateExhibit(Exhibit exhibit)

@@ -48,13 +48,9 @@ namespace Echo.Services
         public bool ArticleExists(int id)
         {
             Dictionary<int, Article> articles = AllArticles();
-
-            foreach (var e in articles.Values)
+            if (articles.ContainsKey(id))
             {
-                if (e.Id.Equals(id))
-                {
-                    return true;
-                }
+                return true;
             }
             return false;
         }

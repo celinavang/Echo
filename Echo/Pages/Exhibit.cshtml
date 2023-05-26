@@ -29,7 +29,7 @@
         <img class="recordimage" src="~/Images/Record.png"/>
         <div class="mask" id="recordimage">
                 <video muted id="exhibitvideo">
-                <source src=@Model.Exhibit.Videourl />
+                <source src=@Model.videourl />
                 </video></div>
          </div>
       
@@ -77,7 +77,7 @@
    
 
     <video id="exhibitvideo">
-        <source src=@Model.Exhibit.Videourl type="video/mp4" >
+        <source src=@Model.videourl type="video/mp4">
     </video>
 
     <!--Videocontrols-->
