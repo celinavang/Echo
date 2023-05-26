@@ -36,7 +36,6 @@ namespace Echo
                 options.SupportedUICultures= supportedCultures;
             });
             services.AddMvc().AddViewLocalization();
-            services.AddSingleton<CommonLocalizationService>();
         }
 
 

@@ -5,13 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Echo.Models;
 using Echo.Interfaces;
-using Echo.Services;
-using System.ComponentModel.DataAnnotations;
 using Microsoft.Extensions.Localization;
-using System.Net.NetworkInformation;
-
-using Microsoft.AspNetCore.Http.Features;
-using Echo.Resources;
 
 namespace Echo.Pages
 {
@@ -26,10 +20,7 @@ namespace Echo.Pages
         {
             catalogue= repository;
             localizer = istringlocalizer;
-            
         }
- 
-  
 
        [BindProperty]
         public string? SearchCriteria { get; set; }
