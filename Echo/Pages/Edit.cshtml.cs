@@ -26,12 +26,10 @@ namespace Echo.Pages
         }
         public IActionResult OnGet(string id)
         {
-             
-            Exhibit=catalogue.GetExhibit(id);
+            Exhibit = catalogue.GetExhibit(id);
             ArticleDa = articleCatalogue.GetArticle(catalogue.GetExhibit(id).ArticledaID);
-            ArticleEn =articleCatalogue.GetArticle(catalogue.GetExhibit(id).ArticleenID);
+            ArticleEn = articleCatalogue.GetArticle(catalogue.GetExhibit(id).ArticleenID);
             return Page();
-
         }
         public IActionResult OnPostSearch()
         {
@@ -39,7 +37,7 @@ namespace Echo.Pages
             {
                 if (catalogue.ExhibitExists(SearchCriteria))
                 {
-                    Response.Redirect("Edit/" + (SearchCriteria));
+                    Response.Redirect("ExhibitInfo/" + (SearchCriteria));
                 }
                 else
                 {
@@ -58,8 +56,10 @@ namespace Echo.Pages
             {
                 return Page();
             }
+            
             Exhibit.ArticledaID = ArticleDa.Id;
             Exhibit.ArticleenID = ArticleEn.Id;
+
             catalogue.UpdateExhibit(Exhibit);
             articleCatalogue.UpdateArticle(ArticleDa);
             articleCatalogue.UpdateArticle(ArticleEn);

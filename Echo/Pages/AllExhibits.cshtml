@@ -30,19 +30,22 @@
                         <th style="width:15%;">Udstillingsnr</th>
                     <th>Navn Dansk</th>
                         <th>Navn Engelsk</th>
-                        <th style="width:5%;"></th>
-                        <th style="width:5%;"></th>
+                        <th style="width:4%;"></th>
+                        <th style="width:4%;"></th>
+                        <th style="width:4%;"></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model.Exhibits)
                 {
                     <tr>
-                        <td><a asp-page="/edit" asp-route-id="@item.Value.ID">@item.Value.ID</a></td>
+                        <td><a title="Vis @item.Value.ID" asp-page="/exhibitinfo" asp-route-id="@item.Value.ID">@item.Value.ID</a></td>
                         <td>@item.Value.Name</td>
-                            <td>@item.Value.Nameen</td>
-                        <td><a asp-page="/edit" asp-route-id="@item.Value.ID"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                            <td id ="deletetrashcan"><a asp-page="/delete" asp-route-id="@item.Value.ID"><i class="fa-solid fa-trash"></i></a></td>
+                        <td>@item.Value.Nameen</td>
+                        <td><a title="Vis udstilling" asp-page="/exhibit" asp-route-id="@item.Value.ID"><i class="fa-solid fa-eye"></i></a></td>
+                        <td><a title="Opdater udstilling" asp-page="/edit" asp-route-id="@item.Value.ID"><i class="fa-solid fa-file-pen"></i></a></td>
+                        <td id="deletetrashcan"><a title="Slet udstilling" asp-page="/delete" asp-route-id="@item.Value.ID"><i class="fa-solid fa-trash"></i></a></td>
+
                     </tr>
 
                 }

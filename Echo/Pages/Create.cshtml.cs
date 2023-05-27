@@ -35,7 +35,7 @@ namespace Echo.Pages
             {
                 if (catalogue.ExhibitExists(SearchCriteria))
                 {
-                    Response.Redirect("Edit/" + (SearchCriteria));
+                    Response.Redirect("ExhibitInfo/" + (SearchCriteria));
                 }
                 else
                 {

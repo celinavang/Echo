@@ -25,17 +25,19 @@
     <div class="exhibitsearch">
     <form method="post">
             <div class="form-group">
-                <label asp-for="SearchCriteria">@localizer["enumber"]</label><br />
-                <input asp-for="SearchCriteria" name="SearchCriteria"
+                <div class="align-left"><label asp-for="SearchCriteria">@localizer["enumber"]</label><br /></div>
+                
+
+                <input asp-for="SearchCriteria" placeholder="0000" name="SearchCriteria"
                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                        type="number"
                        maxlength="4" />  
             </div>
             <div class="form-group">
-                <input type="submit" value="@localizer["search"]"/>
+                <input class="searchbutton" type="submit" value="@localizer["search"]"/>
             </div>
-            <span asp-validation-for="SearchCriteria" class="text-danger"></span>
+            
+            <span asp-validation-for="SearchCriteria" style="text-align:center;"></span>
     </form>
-    <div id="howtolink"><a>Tutorial</a></div>
 </div> 
 </div>

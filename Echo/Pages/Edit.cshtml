@@ -34,7 +34,11 @@
         <div class="admincontainer">
             <h3>Opdater udstilling</h3>
             <h2>Udstillingsinfo <span id="headerspan"> - Udstilling @Model.Exhibit.ID </span></h2>
-                   
+            <div class="adminbuttoncontainer">
+
+                <a title="Vis udstilling" asp-page="/exhibit" asp-route-id="@Model.Exhibit.ID"><i class="fa-solid fa-eye"></i></a>
+                <a id="deletetrashcan" title="Slet udstilling" asp-page="/delete" asp-route-id="@Model.Exhibit.ID"><i class="fa-solid fa-trash"></i></a>
+            </div>
         
             <div class="admingrid-container">
                 <div class="admingrid-item" style="grid-column: 1;">
@@ -73,7 +77,6 @@
                 </div>
 
             </div>
-            <input type="submit" value="Save" id="savebuttonedit"/>
         </div>
 
         <div class="admincontainer">
@@ -141,7 +144,7 @@
 
                 </div>
             </div>
-            <input type="submit" value="Save" id="savebuttonedit"/>
+            <input type="submit" value="Gem" id="savebuttonedit"/>
         </div>
     </form>
 </div>

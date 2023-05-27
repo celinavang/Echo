@@ -16,23 +16,22 @@ namespace Echo.Pages
         {
             catalogue = repository;
             articleCatalogue = articleRepository;
+            Exhibits = catalogue.AllExhibits();
         }
 
         public Dictionary<int, Exhibit> Exhibits { get; private set; }
+        public Dictionary<int, Article> Articles { get; private set; }
 
-       
+
 
         public IActionResult OnPostSearch()
         {
-            if(!ModelState.IsValid)
-            {
-                return Page();
-            }
-            else if (!string.IsNullOrEmpty(SearchCriteria) && SearchCriteria != "0")
+            
+            if (!string.IsNullOrEmpty(SearchCriteria) && SearchCriteria != "0")
             {
                 if (catalogue.ExhibitExists(SearchCriteria))
                 {
-                    Response.Redirect("Edit/" + (SearchCriteria));
+                    Response.Redirect("ExhibitInfo/" + (SearchCriteria));
                 }
                 else
                 {
@@ -49,10 +48,8 @@ namespace Echo.Pages
         public IActionResult OnGet()
         {
             Exhibits = catalogue.AllExhibits();
-            if (!string.IsNullOrEmpty(SearchCriteria))
-            {
-                Exhibits = catalogue.FilterExhibits(SearchCriteria);
-            }
+            Articles = articleCatalogue.AllArticles();
+
             return Page();
         }
     }

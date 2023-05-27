@@ -62,12 +62,15 @@ namespace Echo.Services
         {
             Dictionary<int, Exhibit> exhibits = AllExhibits();
             Exhibit foundExhibit = exhibits[int.Parse(exhibit.ID)];
+            Console.WriteLine(exhibit.ID);
             foundExhibit.ID = exhibit.ID;
             foundExhibit.Name = exhibit.Name;
             foundExhibit.Videourl = exhibit.Videourl;
             foundExhibit.Videourlen = exhibit.Videourlen;
             foundExhibit.Nameen = exhibit.Nameen;
+            JsonFileWriter.WriteToJson(exhibits, JsonFileName);
         }
+
         public void DeleteExhibit(int id)
         {
             Dictionary<int, Exhibit> exhibits = AllExhibits();

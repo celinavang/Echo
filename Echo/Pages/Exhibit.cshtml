@@ -6,6 +6,7 @@
     ViewData["Title"] = Model.exhibitName + " ";
     var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
     var requestCulture = requestCultureFeature.RequestCulture;
+    var test = Model.Article.Bodytext;
 }
 
 
@@ -16,17 +17,19 @@
 <div class="exhibitmain" id="exhibitmain">
 
     <div class="navigation">
-        <a asp-page="Index" asp-route-culture="da"><div class="exhibitreturnbutton" id="returntoindex"><img src="~/images/return.png" /></div></a>
+        <a asp-page="Index" asp-route-culture=@requestCulture.UICulture><div class="exhibitreturnbutton" id="returntoindex"><img src="~/images/return.png" /></div></a>
     </div>
 
     <div class="videopreviewcontainer">
-        <img class="recordimage" src="~/Images/Record.png"/>
+        <img class="recordimage" src="~/Images/Record.svg"/>
         <div class="mask" id="recordimage">
                 <video muted id="exhibitvideo">
                 <source src=@Model.videourl />
                 </video></div>
          </div>
-      
+      <div class="tooltip">Hover over me
+  <span class="tooltiptext">Tooltip text</span>
+</div>
     <div class="playerbox">
             <br />
             <!--Exhibit info-->
@@ -55,10 +58,13 @@
         </div>
     
     <div class="exhibitarticle">
-        <h1>@Model.Article.Header</h1>
-        <h2>@Model.Article.Subheader</h2>
-        <span style="white-space: pre-line">@Model.Article.Bodytext</span>
+        <h1 class="articleheader" >@Model.Article.Header</h1>
+        <hr>
+        <h2 class="articlesubheader">@Model.Article.Subheader</h2>
+        <div dangerouslySetInnerHTML=@Model.Article.Bodytext innerhtml=@Model.Article.Bodytext></div>
+        <span class="articlebreadtext" style="white-space: pre-line">@Model.Article.Bodytext</span>
     </div>
+
 </div>
 
 

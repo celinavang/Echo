@@ -22,8 +22,40 @@
         </nav>
     </header>
 
-    <div class="adminindex">
+    <div class="admincontainer">
+        <h1>Velkommen til Echo Admin</h1><br />
+        
+        <br /><br />
+        <div class="admingrid-container" style="grid-template-columns:auto auto auto; column-gap:50px; margin-top:10px;">
+            <a asp-page="/allexhibits"><button class="adminbutton">Alle udstillinger</button></a>
+            <a asp-page="/create"><button class="adminbutton">Opret udstilling</button></a>
+            <a asp-page="/index"><button class="adminbutton">Gå til ECHO</button></a>
+        </div><br />
+        <br />
+        <h2 style="margin-bottom:10px;">Udstillinger</h2>
+        <div class="admingrid-container" style="grid-template-columns:auto auto auto; column-gap:50px; margin-top:10px;">
+            @foreach (var item in Model.Exhibits)
+            {
+                <div class="admingrid-item">
+                    <a style="text-decoration:none;color:grey;" asp-page="/ehibitinfo" asp-route-id=@item.Value.ID>Udstilling @item.Value.ID</a>
+                    <h3>@item.Value.Name</h3><br>
+                    <video style="width:100%;margin:0;" controls><source src="@item.Value.Videourl"/></video>
+                </div>
 
+            }
+        </div><br />
+        <h2 style="margin-bottom:10px;">Udstillinger</h2>
+        <div class="admingrid-container" style="grid-template-columns:auto auto auto; column-gap:50px; margin-top:10px;">
+            @foreach (var item in Model.Articles)
+            {
+                    <div class="admingrid-item">
+                        <a style="text-decoration:none;color:grey;" asp-page="/ehibitinfo" asp-route-id=@item.Value.Id>Artikel @item.Value.Id</a>
+                        <h3>@item.Value.Header</h3><br>
+                        <p>@item.Value.Subheader</p>
+                    </div>                
+
+            }
+        </div>
     </div>
 
 </body>
