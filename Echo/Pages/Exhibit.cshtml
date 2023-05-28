@@ -43,16 +43,12 @@
                 <a asp-route-culture="en"><img class="navlangflag" src="~/Images/EN.png" /></a>
             </div>
             <!--Exibit Audio/Video-->
-            <audio id="exhibitaudio">
-                <source src="~/audio/file_example_OOG_5MG.ogg" type="audio/ogg">
-                Your browser does not support the audio element.
-            </audio>
             <div class="slidercontainer">
                 <p id="currenttime">00:00</p><progress id="timeline" value="0" max="100"></progress><p id="totaltime">00:00</p>
             </div>
             <div class="audiobuttoncontainer">
                 <button type="button" id="rewind"><img src="~/Images/Rewind.png" id="" width="70%" height="auto" /></button>
-                <button type="button" id="play-pause"><img src="~/Images/PlayButton.png" id="" width="100%" height="auto" /></button>
+                <button type="button" id="play-pause"><img src="~/Images/PlayButton.png" id="play-pause-img" width="100%" height="auto" /></button>
                 <button type="button" id="forward"><img src="~/Images/Forward.png" id="" width="70%" height="auto" /></button>
             </div>
         </div>

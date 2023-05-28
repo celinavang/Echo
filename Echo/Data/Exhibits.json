@@ -7,5 +7,23 @@
     "Nameen": "The Sound of Politics",
     "ArticledaID": 1,
     "ArticleenID": 2
+  },
+  "7": {
+    "ID": "0007",
+    "Name": "Gasolin'",
+    "Videourl": "/video/SåKomMedMig.mp4",
+    "Videourlen": "/video/SåKomMedMig.mp4",
+    "Nameen": "Gasolin'",
+    "ArticledaID": 3,
+    "ArticleenID": 4
+  },
+  "8": {
+    "ID": "0008",
+    "Name": "Festivalhistorie",
+    "Videourl": "/video/RoskildeFestival.mp4",
+    "Videourlen": "/video/RoskildeFestival.mp4",
+    "Nameen": "Festivalhistory",
+    "ArticledaID": 5,
+    "ArticleenID": 6
   }
 }

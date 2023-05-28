@@ -11,7 +11,7 @@ window.onload = function () {
 	var playbutton = document.querySelectorAll("[id='play-pause']");
 	var rewindbutton = document.querySelectorAll("[id='rewind']");
 	var forwardbutton = document.querySelectorAll("[id='forward']");
-	var playimg = document.getElementById("play-pause-img");
+	var playimg = document.querySelectorAll("[id='play-pause-img']");
 
 	var timeline = document.querySelectorAll("[id='timeline']");
 
@@ -41,13 +41,18 @@ window.onload = function () {
 					exhibitvideo[i].play();
 					exhibitvideo[i].currentTime = exhibitvideo[0].currentTime;
 				}
-				playimg.src = "/Images/PauseButton.png";
+				for (var i = 0; i < playimg.length; i++) {
+					playimg[i].src = "/Images/PauseButton.png";
+				}
+				
 			} else {
 				for (var i = 0; i < exhibitvideo.length; i++) {
 					exhibitvideo[i].pause();
 					exhibitvideo[i].currentTime = exhibitvideo[0].currentTime;
 				}
-				playimg.src = "/Images/PlayButton.png";
+				for (var i = 0; i < playimg.length; i++) {
+					playimg[i].src = "/Images/PlayButton.png";
+				}
 
 			}
 		})
